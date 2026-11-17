@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --primary-color: #006B3F;   /* Verde Gama */
+  --secondary-color: #FFFFFF; /* Branco */
+  --tertiary-color: #004225;  /* Verde Escuro */
+  --accent-color: #D4AF37;    /* Dourado */
+  --bg-light: #F4F7F5;        /* Fundo claro */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background-color: var(--bg-light);
+  color: var(--tertiary-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Cabeçalho e Navegação */
+header {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  padding: 20px;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+}
+
+header h1 {
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+header nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo {
+  max-height: 70px;
+  width: auto;
+  border-radius: 8px;
+}
+
+.nav {
+  justify-content: center;
+  gap: 8px;
+}
+
+.nav-link {
+  color: var(--secondary-color) !important;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--accent-color) !important;
+  background-color: var(--tertiary-color);
+}
+
+/* Conteúdo do Carrinho */
+body > h1 {
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 12px;
+  padding: 0 15px;
+}
+
+body > p {
+  background-color: var(--secondary-color);
+  color: var(--tertiary-color);
+  border-left: 5px solid var(--primary-color);
+  padding: 20px 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  max-width: 650px;
+  width: 90%;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+/* Botão Finalizar Compra */
+.btn-primary {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  color: var(--secondary-color) !important;
+  font-weight: 700;
+  padding: 12px 32px;
+  border-radius: 8px;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  margin-bottom: 40px;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--tertiary-color) !important;
+  border-color: var(--tertiary-color) !important;
+  color: var(--accent-color) !important;
+  box-shadow: 0 4px 12px rgba(0, 66, 37, 0.25);
+}

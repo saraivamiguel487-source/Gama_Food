@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GamaFood - Cadastro de Restaurante</title>
+    <link rel="stylesheet" href="Css/cadastro_restaurante.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+        <header class="container">
+        <h1>GamaFood</h1>
+        <nav>
+            <img src="Gama_Food-logo.jpg" alt="Logo do GamaFood" class="logo">
+            <ul class="nav">
+                <li class="nav-item"><a class="nav-link" href="index.html">Voltar ao Início</a></li>
+                <li class="nav-item"><a class="nav-link" href="cadastro_entregador.html">Cadastrar Entregador</a></li>
+                <li class="nav-item"><a class="nav-link" href="login_cliente.html">Login de Cliente</a></li>
+                <li class="nav-item"><a class="nav-link" href="login_entregador.html">Login de Entregador</a></li>
+                <li class="nav-item"><a class="nav-link" href="recuperar_senha.html">Recuperar Senha</a></li>
+                <li class="nav-item"><a class="nav-link" href="carrinho.html">Carrinho</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1>Cadastro de Restaurante</h1>
+    <form>
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome do Restaurante</label>
+            <input type="text" class="form-control" id="nome" required>
+        </div>
+        <div class="mb-3">
+            <label for="endereco" class="form-label">Endereço</label>
+            <input type="text" class="form-control" id="endereco" required>
+        </div>
+        <div class="mb-3">
+            <label for="telefone" class="form-label">Telefone</label>
+            <input type="tel" class="form-control" id="telefone" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </form>
+    <script src="cadastro_restaurante.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoA6VJ0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

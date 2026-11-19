@@ -4,39 +4,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GamaFood - Recuperar Entregador</title>
-    <link rel="stylesheet" href="Css/recuperar_entregador.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>GamaFood - Recuperar Senha do Entregador</title>
+    
+    <!-- Bootstrap e Font Awesome primeiro -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
+    <!-- Seu CSS por último para aplicar as cores do Gama -->
+    <link rel="stylesheet" href="Css/recuperar_entregador.css">
 </head>
+
 <body>
-        <header class="container">
-        <h1>GamaFood</h1>
-        <nav>
-            <img src="Gama_Food-logo.jpg" alt="Logo do GamaFood" class="logo">
-            <ul class="nav">
-                <li class="nav-item"><a class="nav-link" href="index.html">Voltar ao Início</a></li>
-                <li class="nav-item"><a class="nav-link" href="cadastro_restaurante.html">Cadastrar Restaurante</a></li>
-                <li class="nav-item"><a class="nav-link" href="cadastro_entregador.html">Cadastrar Entregador</a></li>
-                <li class="nav-item"><a class="nav-link" href="login_cliente.html">Login de Cliente</a></li>
-                <li class="nav-item"><a class="nav-link" href="login_entregador.html">Login de Entregador</a></li>
-                <li class="nav-item"><a class="nav-link" href="recuperar_senha.html">Recuperar Senha</a></li>
-                <li class="nav-item"><a class="nav-link" href="carrinho.html">Carrinho</a></li>
-            </ul>
-        </nav>
-    </header>
-    <div class="container">
-        <h1>Recuperar Entregador</h1>
-        <form action="processar_recuperar_entregador.php" method="POST">
-            <div class="mb-3">
-                <label for="email" class="form-label">Email:</label>
-                <input type="email" class="form-control" id="email" name="email" required>
+    <header class="header-gama shadow-sm">
+        <div class="container d-flex flex-wrap align-items-center justify-content-between py-3">
+            <div class="d-flex align-items-center gap-3">
+                <img src="Gama_Food-logo.jpg" alt="Logo do GamaFood" class="logo">
+                <h1 class="h3 mb-0 titulo-marca">GamaFood</h1>
             </div>
-            <button type="submit" class="btn btn-primary">Recuperar</button>
-        </form>
-    </div>
-    <script src="recuperar_senha_entregador.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoA6VJ0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cadastro_restaurante.html">Cadastrar Restaurante</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cadastro_entregador.html">Cadastrar Entregador</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login_cliente.html">Login Cliente</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login_entregador.html">Login Entregador</a></li>
+                    <li class="nav-item"><a class="nav-link" href="recuperar_senha.html">Recuperar Senha</a></li>
+                    <li class="nav-item"><a class="nav-link" href="carrinho.html"><i class="fa-solid fa-cart-shopping"></i> Carrinho</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container d-flex justify-content-center align-items-center min-vh-75 my-5">
+        <div class="card card-gama shadow p-4">
+            <div class="text-center mb-4">
+                <div class="icone-destaque mb-2">
+                    <i class="fa-solid fa-motorcycle fa-2x"></i>
+                </div>
+                <h2 class="h4 fw-bold texto-verde-gama">Recuperar Acesso - Entregador</h2>
+                <p class="text-muted small">Digite seu e-mail cadastrado para receber o link de redefinição de senha.</p>
+            </div>
+
+            <!-- Área para alertas dinâmicos do JavaScript -->
+            <div id="mensagem-alerta" class="alert d-none" role="alert"></div>
+
+            <form id="form-recuperar-entregador" action="processar_recuperar_entregador.php" method="POST" novalidate>
+                <div class="mb-3">
+                    <label for="email" class="form-label fw-semibold">E-mail cadastrado:</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-white"><i class="fa-solid fa-envelope text-success"></i></span>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="entregador@gamafood.com.br" required>
+                    </div>
+                </div>
+                <button type="submit" id="btn-enviar" class="btn btn-gama w-100 fw-bold py-2">
+                    <i class="fa-solid fa-paper-plane me-2"></i>Enviar Link de Recuperação
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Removido o integrity inválido para o script local funcionar -->
+    <script src="js/recuperar_senha_entregador.js"></script>
 </body>
+
 </html>

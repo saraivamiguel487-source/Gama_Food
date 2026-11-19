@@ -1,132 +1,109 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
 :root {
-  --primary-color: #006B3F;   /* Verde Gama */
-  --secondary-color: #FFFFFF; /* Branco */
-  --tertiary-color: #004225;  /* Verde Escuro */
-  --accent-color: #D4AF37;    /* Dourado */
-  --bg-light: #F4F7F5;        /* Fundo claro */
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+    --gama-verde-escuro: #005a2b;
+    --gama-verde-principal: #007a33;
+    --gama-verde-claro: #e8f5e9;
+    --gama-amarelo: #ffcc00;
+    --gama-branco: #ffffff;
+    --gama-cinza-fundo: #f4f7f5;
 }
 
 body {
-  background-color: var(--bg-light);
-  color: var(--tertiary-color);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    background-color: var(--gama-cinza-fundo);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Cabeçalho e Navegação */
-header {
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
-  padding: 20px;
-  border-radius: 0 0 12px 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 40px;
-}
-
-header h1 {
-  font-weight: 800;
-  text-align: center;
-  margin-bottom: 15px;
-  letter-spacing: 1px;
-}
-
-header nav {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
+/* Cabeçalho com as cores do Gama */
+.header-gama {
+    background-color: var(--gama-verde-principal);
+    border-bottom: 4px solid var(--gama-amarelo);
 }
 
 .logo {
-  max-height: 70px;
-  width: auto;
-  border-radius: 8px;
+    width: 55px;
+    height: 55px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--gama-amarelo);
 }
 
-.nav {
-  justify-content: center;
-  gap: 8px;
+.titulo-marca {
+    color: var(--gama-branco);
+    font-weight: 800;
+    letter-spacing: 0.5px;
 }
 
-.nav-link {
-  color: var(--secondary-color) !important;
-  font-weight: 600;
-  font-size: 15px;
-  border-radius: 6px;
-  transition: all 0.3s ease;
+.header-gama .nav-link {
+    color: var(--gama-branco);
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+    border-radius: 6px;
 }
 
-.nav-link:hover {
-  color: var(--accent-color) !important;
-  background-color: var(--tertiary-color);
+.header-gama .nav-link:hover {
+    color: var(--gama-amarelo);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Título e Card do Formulário */
-body > h1 {
-  color: var(--primary-color);
-  font-weight: 700;
-  font-size: 28px;
-  text-align: center;
-  margin-bottom: 20px;
-  padding: 0 15px;
+/* Cartão do Formulário */
+.card-gama {
+    width: 100%;
+    max-width: 720px;
+    border: none;
+    border-top: 5px solid var(--gama-verde-principal);
+    border-radius: 12px;
+    background-color: var(--gama-branco);
 }
 
-body > form {
-  width: 90%;
-  max-width: 550px;
-  background-color: var(--secondary-color);
-  padding: 35px;
-  border-radius: 12px;
-  border-top: 5px solid var(--primary-color);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-  margin-bottom: 40px;
+.texto-verde-gama {
+    color: var(--gama-verde-escuro);
 }
 
-.form-label {
-  color: var(--tertiary-color);
-  font-weight: 600;
+.icone-destaque {
+    width: 65px;
+    height: 65px;
+    background-color: var(--gama-verde-claro);
+    color: var(--gama-verde-principal);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--gama-amarelo);
 }
 
-.form-control {
-  border: 1.5px solid #ced4da;
-  border-radius: 8px;
-  padding: 10px 14px;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+/* Campos, Links e Botões */
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--gama-verde-principal);
+    box-shadow: 0 0 0 0.25rem rgba(0, 122, 51, 0.25);
 }
 
-.form-control:focus {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 0.25rem rgba(0, 107, 63, 0.2);
+.form-control:disabled {
+    background-color: #e9ecef;
+    cursor: not-allowed;
 }
 
-/* Botão Principal */
-.btn-primary {
-  width: 100%;
-  background-color: var(--primary-color) !important;
-  border-color: var(--primary-color) !important;
-  color: var(--secondary-color) !important;
-  font-weight: 700;
-  padding: 12px;
-  border-radius: 8px;
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease;
+.link-gama {
+    color: var(--gama-verde-principal);
+    transition: color 0.2s;
 }
 
-.btn-primary:hover,
-.btn-primary:focus {
-  background-color: var(--tertiary-color) !important;
-  border-color: var(--tertiary-color) !important;
-  color: var(--accent-color) !important;
-  box-shadow: 0 4px 12px rgba(0, 66, 37, 0.25);
+.link-gama:hover {
+    color: var(--gama-verde-escuro);
+    text-decoration: underline !important;
+}
+
+.btn-gama {
+    background-color: var(--gama-verde-principal);
+    color: var(--gama-branco);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-gama:hover {
+    background-color: var(--gama-verde-escuro);
+    color: var(--gama-amarelo);
+    transform: translateY(-1px);
 }

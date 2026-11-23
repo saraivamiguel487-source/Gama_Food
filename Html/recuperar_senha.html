@@ -5,43 +5,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GamaFood - Recuperar Senha</title>
-    <link rel="stylesheet" href="Css/recuperar_senha.css">
+    <!-- Bootstrap primeiro -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Seu CSS por último -->
+    <link rel="stylesheet" href="Css/recuperar_senha.css">
 </head>
+
 <body>
-        <header class="container">
-        <h1>GamaFood</h1>
-        <nav>
-            <img src="Gama_Food-logo.jpg" alt="Logo do GamaFood" class="logo">
-            <ul class="nav">
-                <li class="nav-item"><a class="nav-link" href="index.html">Voltar ao Início</a></li>
-                <li class="nav-item"><a class="nav-link" href="cadastro_restaurante.html">Cadastrar Restaurante</a></li>
-                <li class="nav-item"><a class="nav-link" href="cadastro_entregador.html">Cadastrar Entregador</a></li>
-                <li class="nav-item"><a class="nav-link" href="login_cliente.html">Login de Cliente</a></li>
-                <li class="nav-item"><a class="nav-link" href="login_entregador.html">Login de Entregador</a></li>
-                <li class="nav-item"><a class="nav-link" href="recuperar_senha.html">Recuperar Senha</a></li>
-                <li class="nav-item"><a class="nav-link" href="carrinho.html">Carrinho</a></li>
-            </ul>
-        </nav>
+    <header class="header-gama shadow-sm">
+        <div class="container d-flex flex-wrap align-items-center justify-content-between py-3">
+            <div class="d-flex align-items-center gap-3">
+                <img src="Gama_Food-logo.jpg" alt="Logo do GamaFood" class="logo">
+                <h1 class="m-0 titulo-marca">GamaFood</h1>
+            </div>
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Voltar ao Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cadastro_restaurante.html">Cadastrar Restaurante</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cadastro_entregador.html">Cadastrar Entregador</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login_cliente.html">Login de Cliente</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login_entregador.html">Login de Entregador</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="recuperar_senha.html">Recuperar Senha</a></li>
+                    <li class="nav-item"><a class="nav-link" href="carrinho.html"><i class="fa-solid fa-cart-shopping"></i> Carrinho</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
-    <div class="container">
+
+    <main class="container my-5">
         <div class="row justify-content-center">
-            <div class="col-md-6">
-                <h2 class="text-center mb-4">Recuperar Senha</h2>
-                <form action="#" method="POST">
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
+            <div class="col-md-6 col-lg-5">
+                <div class="card card-gama shadow-sm p-4">
+                    <div class="text-center mb-4">
+                        <i class="fa-solid fa-key fa-2x text-gama mb-2"></i>
+                        <h2 class="titulo-secao m-0">Recuperar Senha</h2>
+                        <p class="text-muted small mt-1">Informe o e-mail cadastrado para redefinir sua senha.</p>
                     </div>
-                    <button type="submit" class="btn btn-primary w-100">Enviar</button>
-                </form>
+
+                    <!-- Área de mensagens de feedback -->
+                    <div id="mensagem-alerta" class="alert d-none" role="alert"></div>
+
+                    <form id="form-recuperar" novalidate>
+                        <div class="mb-3">
+                            <label for="email" class="form-label fw-semibold">E-mail cadastrado</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-gama-claro text-gama"><i class="fa-solid fa-envelope"></i></span>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="seuemail@exemplo.com" required>
+                            </div>
+                        </div>
+
+                        <!-- Etapa 2: Nova senha (aparece quando o e-mail é encontrado) -->
+                        <div id="etapa-nova-senha" class="d-none">
+                            <div class="mb-3">
+                                <label for="nova-senha" class="form-label fw-semibold">Nova Senha</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-gama-claro text-gama"><i class="fa-solid fa-lock"></i></span>
+                                    <input type="password" class="form-control" id="nova-senha" name="nova-senha" placeholder="Mínimo 4 caracteres">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="confirmar-senha" class="form-label fw-semibold">Confirmar Nova Senha</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-gama-claro text-gama"><i class="fa-solid fa-check-double"></i></span>
+                                    <input type="password" class="form-control" id="confirmar-senha" name="confirmar-senha" placeholder="Repita a nova senha">
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" id="btn-submit" class="btn btn-gama w-100 py-2">
+                            <i class="fa-solid fa-paper-plane me-1"></i> Verificar E-mail
+                        </button>
+                    </form>
+
+                    <div class="text-center mt-3 pt-3 border-top">
+                        <a href="login_cliente.html" class="link-gama small text-decoration-none">
+                            <i class="fa-solid fa-arrow-left me-1"></i> Voltar para o Login
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
 
-    <script src="recuperar_senha.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoA6VJ0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://jsdelivr.net" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <!-- Seu JavaScript local (SEM atributo integrity!) -->
+    <script src="Js/recuperar_senha.js"></script>
 </body>
+
 </html>

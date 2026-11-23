@@ -29,13 +29,45 @@
     <h1>Cadastro de Restaurante</h1>
     <form>
         <div class="mb-3">
-            <label for="nome" class="form-label">Nome do Restaurante</label>
-            <input type="text" class="form-control" id="nome" required>
+            <label for="nome_estabelecimento" class="form-label">Nome do Estabelecimento</label>
+            <input type="text" class="form-control" id="nome_estabelecimento" required>
+        </div>
+        <div class="mb-3">
+            <label for="cnpj_or_mei" class="form-label">CNPJ ou MEI</label>
+            <input type="text" class="form-control" id="cnpj_or_mei" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">E-mail</label>
+            <input type="email" class="form-control" id="email" required>
+        </div>
+        <div class="mb-3">
+            <label for="setor_gama" class="form-label">Setor do Gama</label>
+            <select class="form-select" id="setor_gama" required>
+                <option value="">Selecione o setor</option>
+                <option value="setor1">Setor central</option>
+                <option value="setor2">Setor sul</option>
+                <option value="setor3">Setor leste</option>
+                <option value="setor4">Setor norte</option>
+                <option value="setor5">Setor oeste</option>
+            </select>
         </div>
         <div class="mb-3">
             <label for="endereco" class="form-label">Endereço</label>
             <input type="text" class="form-control" id="endereco" required>
         </div>
+        <div class="mb-3">
+            <label for="especialidade_caseira" class="form-label">Especialidade Caseira</label>
+            <input type="text" class="form-control" id="especialidade_caseira" required>
+        </div>
+        <div class="mb-3">
+            <label for="status_ativo" class="form-label">Status Ativo</label>
+            <select class="form-select" id="status_ativo" required>
+                <option value="">Selecione o status</option>
+                <option value="ativo">Ativo</option>
+                <option value="inativo">Inativo</option>
+            </select>
+        </div>
+        <div class="mb-3"></div>
         <div class="mb-3">
             <label for="telefone" class="form-label">Telefone</label>
             <input type="tel" class="form-control" id="telefone" required>

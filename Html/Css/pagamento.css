@@ -1,0 +1,71 @@
+
+:root {
+    --verde-gama: #198754;
+    --verde-gama-escuro: #146c43;
+}
+
+body {
+    background-color: #f4f6f9;
+}
+
+.header-gama {
+    background-color: #ffffff;
+    border-bottom: 3px solid var(--verde-gama);
+}
+
+.logo {
+    height: 45px;
+    width: auto;
+    border-radius: 8px;
+}
+
+.titulo-marca {
+    color: var(--verde-gama);
+    font-weight: 700;
+}
+
+.header-gama .nav-link {
+    color: #333;
+    font-weight: 500;
+}
+
+.header-gama .nav-link:hover {
+    color: var(--verde-gama);
+}
+
+.card-gama {
+    border: none;
+    border-top: 4px solid var(--verde-gama);
+    border-radius: 12px;
+}
+
+.texto-verde-gama {
+    color: var(--verde-gama);
+}
+
+.btn-gama {
+    background-color: var(--verde-gama);
+    color: #ffffff;
+    border: none;
+    transition: background-color 0.2s;
+}
+
+.btn-gama:hover {
+    background-color: var(--verde-gama-escuro);
+    color: #ffffff;
+}
+
+.max-w-400 {
+    max-width: 400px;
+}
+
+.qr-placeholder {
+    width: 120px;
+    height: 120px;
+    background: #fff;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

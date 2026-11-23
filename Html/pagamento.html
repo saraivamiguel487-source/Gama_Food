@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GamaFood - Pagamento</title>
+
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://jsdelivr.net" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Font Awesome 6.7 CSS -->
+    <link rel="stylesheet" href="https://cloudflare.com"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- CSS do GamaFood -->
+    <link rel="stylesheet" href="Css/pagamento.css">
+</head>
+
+<body>
+    <!-- Cabeçalho padrão do projeto -->
+    <header class="header-gama shadow-sm">
+        <div class="container d-flex flex-wrap align-items-center justify-content-between py-3">
+            <div class="d-flex align-items-center gap-3">
+                <img src="Gama_Food-logo.jpg" alt="Logo do GamaFood" class="logo">
+                <h1 class="h3 mb-0 titulo-marca">GamaFood</h1>
+            </div>
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="carrinho.html"><i class="fa-solid fa-cart-shopping me-1"></i> Carrinho</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container my-5">
+        <!-- Alerta único para mensagens de validação e confirmação -->
+        <div id="alerta-pagamento" class="alert d-none" role="alert"></div>
+
+        <form id="form-pagamento-unificado" novalidate>
+            <div class="row g-4">
+                <!-- Coluna Esquerda: Formulários Unificados (Entrega + Tipo de Pagamento) -->
+                <div class="col-lg-8">
+                    
+                    <!-- Bloco 1: Endereço de Entrega -->
+                    <div class="card card-gama shadow-sm p-4 mb-4">
+                        <h2 class="h5 fw-bold texto-verde-gama mb-3">
+                            <i class="fa-solid fa-location-dot me-2"></i>1. Onde entregar?
+                        </h2>
+                        <div class="row g-3">
+                            <div class="col-md-5">
+                                <label for="setor" class="form-label fw-semibold">Setor (Gama - DF)</label>
+                                <select class="form-select" id="setor" required>
+                                    <option value="Setor Central">Setor Central</option>
+                                    <option value="Setor Leste">Setor Leste</option>
+                                    <option value="Setor Oeste">Setor Oeste</option>
+                                    <option value="Setor Norte">Setor Norte</option>
+                                    <option value="Setor Sul">Setor Sul</option>
+                                    <option value="Ponte Alta">Ponte Alta</option>
+                                </select>
+                            </div>
+                            <div class="col-md-7">
+                                <label for="endereco" class="form-label fw-semibold">Quadra / Conjunto / Casa ou Lote</label>
+                                <input type="text" class="form-control" id="endereco" placeholder="Ex: Quadra 12, Conjunto B, Casa 05" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="complemento" class="form-label fw-semibold">Ponto de referência / Complemento</label>
+                                <input type="text" class="form-control" id="complemento" placeholder="Ex: Próximo à praça, portão verde">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bloco 2: Definição do Tipo de Pagamento -->
+                    <div class="card card-gama shadow-sm p-4">
+                        <h2 class="h5 fw-bold texto-verde-gama mb-3">
+                            <i class="fa-solid fa-credit-card me-2"></i>2. Como deseja pagar?
+                        </h2>
+
+                        <!-- Seletor de Tipo (Abas) -->
+                        <div class="btn-group w-100 mb-4" role="group" aria-label="Escolha o tipo de pagamento">
+                            <input type="radio" class="btn-check" name="metodoPagamento" id="metodoPix" value="pix" checked>
+                            <label class="btn btn-outline-success py-2 fw-semibold" for="metodoPix">
+                                <i class="fa-brands fa-pix me-1"></i> PIX
+                            </label>
+
+                            <input type="radio" class="btn-check" name="metodoPagamento" id="metodoCartao" value="cartao">
+                            <label class="btn btn-outline-success py-2 fw-semibold" for="metodoCartao">
+                                <i class="fa-solid fa-credit-card me-1"></i> Cartão
+                            </label>
+
+                            <input type="radio" class="btn-check" name="metodoPagamento" id="metodoDinheiro" value="dinheiro">
+                            <label class="btn btn-outline-success py-2 fw-semibold" for="metodoDinheiro">
+                                <i class="fa-solid fa-money-bill-wave me-1"></i> Dinheiro
+                            </label>
+                        </div>
+
+                        <!-- Sub-formulário PIX -->
+                        <div id="painel-pix" class="painel-metodo text-center p-3 bg-light rounded border">
+                            <p class="mb-2 fw-semibold">Copie a chave PIX abaixo ou escaneie o QR Code:</p>
+                            <div class="qr-placeholder my-3 mx-auto">
+                                <i class="fa-solid fa-qrcode fa-5x text-dark"></i>
+                            </div>
+                            <div class="input-group max-w-400 mx-auto">
+                                <input type="text" class="form-control form-control-sm" id="codigo-pix"
+                                    value="00020126360014BR.GOV.BCB.PIX0114gamafood@pix.br5204000053039865802BR" readonly>
+                                <button class="btn btn-gama btn-sm" type="button" id="btn-copiar-pix">
+                                    <i class="fa-regular fa-copy me-1"></i> Copiar
+                                </button>
+                            </div>
+                            <small class="text-muted d-block mt-2">O pedido é liberado automaticamente após o pagamento.</small>
+                        </div>
+
+                        <!-- Sub-formulário Cartão -->
+                        <div id="painel-cartao" class="painel-metodo d-none">
+                            <div class="row g-3">
+                                <div class="col-md-8">
+                                    <label for="numeroCartao" class="form-label fw-semibold">Número do Cartão</label>
+                                    <input type="text" class="form-control" id="numeroCartao" placeholder="0000 0000 0000 0000" maxlength="19">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="tipoCartao" class="form-label fw-semibold">Modalidade</label>
+                                    <select class="form-select" id="tipoCartao">
+                                        <option value="credito">Crédito</option>
+                                        <option value="debito">Débito</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label for="nomeCartao" class="form-label fw-semibold">Nome do Titular (como no cartão)</label>
+                                    <input type="text" class="form-control" id="nomeCartao" placeholder="NOME COMPLETO">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="validadeCartao" class="form-label fw-semibold">Validade</label>
+                                    <input type="text" class="form-control" id="validadeCartao" placeholder="MM/AA" maxlength="5">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="cvvCartao" class="form-label fw-semibold">Código de Segurança (CVV)</label>
+                                    <input type="text" class="form-control" id="cvvCartao" placeholder="123" maxlength="4">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sub-formulário Dinheiro -->
+                        <div id="painel-dinheiro" class="painel-metodo d-none">
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" id="precisaTroco">
+                                <label class="form-check-label fw-semibold" for="precisaTroco">
+                                    Preciso de troco na entrega
+                                </label>
+                            </div>
+                            <div id="campo-troco" class="d-none">
+                                <label for="valorTroco" class="form-label fw-semibold">Troco para qual valor? (R$)</label>
+                                <input type="number" class="form-control" id="valorTroco" placeholder="Ex: 50.00" step="0.01" min="0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coluna Direita: Resumo e Ação de Pagar -->
+                <div class="col-lg-4">
+                    <div class="card card-gama shadow-sm p-4">
+                        <h2 class="h5 fw-bold texto-verde-gama mb-3">
+                            <i class="fa-solid fa-receipt me-2"></i>Resumo do Pedido
+                        </h2>
+                        <ul class="list-group mb-3" id="resumo-pedido">
+                            <!-- Itens do pedido serão preenchidos dinamicamente via JS -->
+                        </ul>
+                        <div class="d-flex justify-content-between fw-semibold mb-3">
+                            <span>Valor Total:</span>
+                            <span id="total-pedido">R$ 0,00</span>
+                        </div>
+                        <button type="submit" class="btn btn-gama w-100 py-2 fw-bold">
+                            <i class="fa-solid fa-check me-1"></i> Finalizar Pedido
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </main>
+</body>
+</html>
